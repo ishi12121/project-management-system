@@ -5,13 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon server.js",
+    "server": "nodemon server.js"
+    
+
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "build": "^0.1.4",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
