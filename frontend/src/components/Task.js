@@ -14,31 +14,7 @@ import TaskModal from "./TaskModal";
 
 function Task() {
 
-    // const itemsFromBackend = [
-    //     { _id: uuid(), content: "First task" },
-    //     { _id: uuid(), content: "Second task" },
-    //     { _id: uuid(), content: "Third task" },
-    //     { _id: uuid(), content: "Forth task" }
-    // ];
-
-    // const columnsFromBackend = {
-    //     [uuid()]: {
-    //         name: "Requested",
-    //         items: []
-    //     },
-    //     [uuid()]: {
-    //         name: "To do",
-    //         items: []
-    //     },
-    //     [uuid()]: {
-    //         name: "In Progress",
-    //         items: []
-    //     },
-    //     [uuid()]: {
-    //         name: "Done",
-    //         items: []
-    //     }
-    // };
+  
 
     const onDragEnd = (result, columns, setColumns) => {
         if (!result.destination) return;
