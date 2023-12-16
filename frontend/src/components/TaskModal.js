@@ -2,23 +2,16 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-
-
-
-
-
-
-
+const apiUrl = process.env.REACT_APP_API_BASE_URL;
 const TaskModal = ({ isOpen, setIsOpen, id }) => {
     const [taskData, setTaskData] = useState('')
-
     const capitalizeFirstLetter = (string) => {
         return string ? string.charAt(0).toUpperCase() + string.slice(1) : ''
     }
 
     useEffect(() => {
         if (isOpen) {
-            axios.get(`https://project-management-api-4mjg.onrender.com/${id.projectId}/task/${id.id}`)
+            axios.get(`${apiUrl}/project/${id.projectId}/task/${id.id}`)
                 .then((data) => {
                     setTaskData({ ...data.data[0].task[0] });
             
@@ -86,4 +79,4 @@ const TaskModal = ({ isOpen, setIsOpen, id }) => {
     )
 }
 
-export default TaskModal
+export default TaskModal;

@@ -4,7 +4,7 @@ import BtnPrimary from './BtnPrimary'
 import BtnSecondary from './BtnSecondary'
 import axios from "axios"
 import toast from 'react-hot-toast'
-
+const apiUrl = process.env.REACT_APP_API_BASE_URL;
 const AddProjectModal = ({ isModalOpen, closeModal, edit = false, id = null }) => {
 
     const [title, setTitle] = useState('')
@@ -12,7 +12,7 @@ const AddProjectModal = ({ isModalOpen, closeModal, edit = false, id = null }) =
 
     useEffect(() => {
         if (edit && isModalOpen) {
-            axios.get(`https://project-management-api-4mjg.onrender.com/project/${id}`)
+            axios.get(` ${apiUrl}/project/${id}`)
                 .then((res) => {
                     setTitle(res.data[0].title)
                     setDesc(res.data[0].description)
@@ -27,7 +27,7 @@ const AddProjectModal = ({ isModalOpen, closeModal, edit = false, id = null }) =
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!edit) {
-            axios.post('https://project-management-api-4mjg.onrender.com/project/', { title, description: desc })
+            axios.post(`${apiUrl}/project/`, { title, description: desc })
                 .then((res) => {
                     closeModal()
                     const customEvent = new CustomEvent('projectUpdate', { detail: { ...res.data } });
@@ -44,7 +44,7 @@ const AddProjectModal = ({ isModalOpen, closeModal, edit = false, id = null }) =
                     }
                 })
         } else {
-            axios.put(`https://project-management-api-4mjg.onrender.com/${id}`, { title, description: desc })
+            axios.put(`${apiUrl}/project/${id}`, { title, description: desc })
                 .then((res) => {
                     closeModal()
                     const customEvent = new CustomEvent('projectUpdate', { detail: { ...res.data } });

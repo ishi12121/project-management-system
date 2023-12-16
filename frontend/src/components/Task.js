@@ -11,7 +11,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import TaskModal from "./TaskModal";
 
-
+const apiUrl = process.env.REACT_APP_API_BASE_URL;
 function Task() {
 
   
@@ -88,7 +88,7 @@ function Task() {
 
     useEffect(() => {
         if (!isAddTaskModalOpen || isRenderChange) {
-            axios.get(`https://project-management-api-4mjg.onrender.com/project/${projectId}`)
+            axios.get(` ${apiUrl}/project/${projectId}`)
                 .then((res) => {
                     setTitle(res.data[0].title)
                     setColumns({
@@ -125,7 +125,7 @@ function Task() {
     }, [projectId, isAddTaskModalOpen, isRenderChange]);
 
     const updateTodo = (data) => {
-        axios.put(`https://project-management-api-4mjg.onrender.com/project/${projectId}/todo`, data)
+        axios.put(` ${apiUrl}/project/${projectId}/todo`, data)
             .then((res) => {
             }).catch((error) => {
                 toast.error('Something went wrong')
@@ -134,7 +134,7 @@ function Task() {
 
     const handleDelete = (e, taskId) => {
         e.stopPropagation();
-        axios.delete(`https://project-management-api-4mjg.onrender.com/project/${projectId}/task/${taskId}`)
+        axios.delete(` ${apiUrl}/project/${projectId}/task/${taskId}`)
             .then((res) => {
                 toast.success('Task is deleted')
                 setRenderChange(true)

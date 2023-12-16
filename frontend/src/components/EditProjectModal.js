@@ -6,4 +6,4 @@ const EditProjectModal = () => {
     )
 }
 
-export default EditProjectModal
+export default EditProjectModal;

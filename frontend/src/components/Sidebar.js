@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import AddProjectModal from './AddProjectModal'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+const apiUrl = process.env.REACT_APP_API_BASE_URL;
 // import toast from 'react-hot-toast'
 const Sidebar = () => {
 
@@ -24,7 +25,7 @@ const Sidebar = () => {
   }, [])
 
   const projectData = () => {
-    axios.get('https://project-management-api-4mjg.onrender.com/projects/')
+    axios.get(`${apiUrl}/projects/`)
       .then((res) => {
         setProjects(res.data)
       })
