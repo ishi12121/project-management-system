@@ -15,7 +15,7 @@ const origin = process.env.CORS_ORIGIN || 'http://localhost:3000'
 const app = express()
 
 const corsOptions ={
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000','https://project-management-system-blush.vercel.app'],
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
